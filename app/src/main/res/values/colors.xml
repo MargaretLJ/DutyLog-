@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background_color">#000000</color>
+    <color name="thumb_checked">#4CAF50</color>
+    <color name="thumb_unchecked">#000000</color>
+    <color name="track_checked">#333333</color>
+    <color name="track_unchecked">#A9A9A9</color>
+    <color name="text_color">#333333</color>
+</resources>

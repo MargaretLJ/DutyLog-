@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/headerTextView"
+        android:layout_width="639dp"
+        android:layout_height="138dp"
+        android:background="#000000"
+        android:gravity="center"
+
+        android:padding="16dp"
+        android:text="DutyLog"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:fontFamily="@font/segoeui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Switch
+        android:id="@+id/workSwitch"
+        android:layout_width="195dp"
+        android:layout_height="63dp"
+        android:fontFamily="@font/segoeui"
+        android:text="Work Mode"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        android:thumb="@drawable/custom_thumb"
+        android:track="@drawable/custom_switch_track"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.402" />
+
+    <TextView
+        android:id="@+id/coordinatesTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="#A8A0A0"
+        android:padding="16dp"
+        android:text="Coordinates: "
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workSwitch" />
+</androidx.constraintlayout.widget.ConstraintLayout>
