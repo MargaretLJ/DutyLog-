@@ -10,9 +10,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.TextView;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -35,7 +33,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
-    private TextView coordinatesTextView;
     private static final String TAG = "MainActivity";
     private Sqlitedatabase dbhelper;
     private LocationUpdateReceiver locationUpdateReceiver;
@@ -50,14 +47,29 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        dbhelper = new Sqlitedatabase(this);
-        coordinatesTextView = findViewById(R.id.coordinatesTextView);
 
-        Switch workmode = findViewById(R.id.workSwitch);
-        workmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dbhelper = new Sqlitedatabase(this);
+
+        // Initialize the SeekBar
+        SeekBar workSeekBar = findViewById(R.id.slider);
+
+        // Set SeekBar listener
+        workSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (isChecked) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Handle SeekBar progress change here if needed
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Handle when the user starts touching the SeekBar
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Handle when the user stops touching the SeekBar
+                boolean isWorkModeEnabled = seekBar.getProgress() > 0; // Assuming any progress > 0 means Work Mode is on
+                if (isWorkModeEnabled) {
                     if (hasLocationPermissions()) {
                         Toast.makeText(MainActivity.this, "Accessing location..", Toast.LENGTH_SHORT).show();
                         startLocationService();
@@ -133,10 +145,11 @@ public class MainActivity extends AppCompatActivity {
                 double latitude = intent.getDoubleExtra(LocationService.EXTRA_LATITUDE, 0);
                 double longitude = intent.getDoubleExtra(LocationService.EXTRA_LONGITUDE, 0);
                 String coordinates = "Coordinates: " + latitude + ", " + longitude;
-                coordinatesTextView.setText(coordinates);
+                // coordinatesTextView.setText(coordinates); // Commented out for now
                 Log.d(TAG, coordinates);
             }
         }
     }
 }
+
 
