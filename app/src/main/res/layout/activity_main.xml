@@ -3,57 +3,98 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Left side (profile and company name) -->
 
-    <TextView
-        android:id="@+id/headerTextView"
-        android:layout_width="639dp"
-        android:layout_height="138dp"
-        android:background="#000000"
+    <!-- Company logo -->
+    <LinearLayout
+        android:id="@+id/left_side"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="#19116E"
         android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/right_side"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        android:padding="16dp"
-        android:text="DutyLog"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        android:fontFamily="@font/segoeui"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        <!-- Work Mode text -->
+        <TextView
+            android:id="@+id/working_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Work Mode"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintMarginStart="24dp"
+            app:layout_constraintMarginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/company_label"
+        android:layout_width="125dp"
+        android:layout_height="91dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/company_logo"
+        app:layout_constraintMarginStart="16dp"
+        app:layout_constraintMarginTop="16dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Switch
-        android:id="@+id/workSwitch"
-        android:layout_width="195dp"
-        android:layout_height="63dp"
-        android:fontFamily="@font/segoeui"
-        android:text="Work Mode"
-        android:textColor="@color/text_color"
-        android:textSize="20sp"
-        android:thumb="@drawable/custom_thumb"
-        android:track="@drawable/custom_switch_track"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.402" />
-
-    <TextView
-        android:id="@+id/coordinatesTextView"
+    <!-- Right side (slider and profile image) -->
+    <LinearLayout
+        android:id="@+id/right_side"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:background="#A8A0A0"
-        android:padding="16dp"
-        android:text="Coordinates: "
-        android:textSize="18sp"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workSwitch" />
+        app:layout_constraintStart_toEndOf="@+id/left_side"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Big slider -->
+        <SeekBar
+            android:id="@+id/slider"
+            android:layout_width="87dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/profile_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintMarginBottom="16dp"
+            app:layout_constraintMarginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/example_view"
+        android:layout_width="62dp"
+        android:layout_height="78dp"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/white_person_profile"
+        app:layout_constraintEnd_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
