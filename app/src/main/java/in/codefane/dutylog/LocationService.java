@@ -25,6 +25,13 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.Priority;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+
+
 
 public class LocationService extends Service {
     private static final String TAG = "LocationService";
@@ -119,9 +126,10 @@ public class LocationService extends Service {
                 long timestamp = cursor.getLong(cursor.getColumnIndexOrThrow(Sqlitedatabase.COLUMN_TIMESTAMP));
                 Log.d(TAG, "Lat: " + latitude + ", Lon: " + longitude + ", Time: " + timestamp);
             } while (cursor.moveToNext());
-        }
-        cursor.close();
+        } else{
+        Log.d(TAG,"No locations found");
     }
+        cursor.close();}
 
 
     private void broadcastLocation(Location location) {

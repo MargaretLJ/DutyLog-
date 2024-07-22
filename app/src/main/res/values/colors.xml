@@ -5,7 +5,7 @@
     <color name="background_color">#000000</color>
     <color name="thumb_checked">#4CAF50</color>
     <color name="thumb_unchecked">#000000</color>
-    <color name="track_checked">#333333</color>
+    <color name="track_checked">#19116E</color>
     <color name="track_unchecked">#B5ABD1</color>
     <color name="text_color">#333333</color>
 </resources>

@@ -74,11 +74,14 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private ApiService apiService;
     private static final String TAG = "LoginActivity";
+    private Sqlitedatabase dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+        dbHelper=new Sqlitedatabase(this);
 
         Retrofit retrofit = RetrofitClient.getClient("http://dutylog.codefane.in/");
         apiService = retrofit.create(ApiService.class);
@@ -102,9 +105,11 @@ public class LoginActivity extends AppCompatActivity {
         apiService.login(loginRequest).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    LoginResponse loginResponse = response.body();
-                    String token=loginResponse.getToken();
+                LoginResponse loginResponse = response.body();
+                String token=loginResponse.getToken();
+                if (response.isSuccessful() && token != null) {
+                    dbHelper.saveToken(token);
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
